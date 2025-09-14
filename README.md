@@ -2,4 +2,4 @@
 
 #Ссылка на датасет https://94.124.179.195:9001/browser/poly-bio-data/GSE13159_RAW.tar
 
-Источник датасета - https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE13159
+#Источник датасета - https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE13159
