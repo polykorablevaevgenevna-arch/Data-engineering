@@ -4,4 +4,6 @@
 #Источник датасета - https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE13159
 
 #Скриншот с результатом команды raw_data.head(10)
+<img width="514" height="272" alt="image" src="https://github.com/user-attachments/assets/e73cef82-ad2f-46e2-833b-d00dd46448bd" />
+
 
