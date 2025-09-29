@@ -4,6 +4,6 @@
 #Источник датасета: https://portal.gdc.cancer.gov/genes/ENSG00000141510
 
 #Скриншот с результатом команды raw_data.head(10)
-<img width="514" height="272" alt="image" src="https://github.com/user-attachments/assets/e73cef82-ad2f-46e2-833b-d00dd46448bd" />
+<img width="665" height="663" alt="image" src="https://github.com/user-attachments/assets/17c030d8-1aaa-4db1-a461-7d5185e82157" />
 
 
