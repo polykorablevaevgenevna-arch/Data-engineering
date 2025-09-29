@@ -1,3 +1,4 @@
+#Выгрузка файла с хранилища MiniO
 import urllib3
 from minio import Minio
 from tqdm import tqdm
@@ -35,3 +36,13 @@ try:
     print("Object downloaded successfully.")
 except Exception as err:
     print(f"Error downloading object: {err}")
+
+
+
+#Привидение типов
+import pandas as pd
+df = pd.read_csv('C:/data_eng/frequent-mutations.2025-09-28.tsv', sep='\t') #чтение файла
+print(df.dtypes) #вывести исходные типы данных
+newdf = df.convert_dtypes() #конвертировать в новые опитмальные типы данных
+print(newdf.head()) #вывести новые типы данных
+df.to_parquet('data.parquet', engine='pyarrow') #сохранить файл в формате .parquet
