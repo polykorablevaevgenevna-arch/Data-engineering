@@ -1,6 +1,7 @@
 Выводит 10 рандомных шуток про программирование
 
 Источник: https://github.com/15Dkatz/official_joke_api
+
 API: https://official-joke-api.appspot.com/random_joke
 
 Вывод:
