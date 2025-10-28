@@ -33,28 +33,51 @@ if access:
 else:
     print("Нет учетных данных для подключения")
 
-#добавление данных в таблицу
-df = pd.read_csv(r'C:\data_eng\frequent-mutations.2025-09-28.tsv', sep = '\t')
-
 cur = conn_pg.cursor()
+
+#Создание таблицы
+cur.execute("""
+CREATE TABLE IF NOT EXISTS korableva (
+    id TEXT,
+    dna_change TEXT,
+    protein_change TEXT,
+    type_of_mutation TEXT,
+    consequence_for_transcript TEXT,
+    num_tp53mut INTEGER,
+    num_all_tp53_mut INTEGER,
+    perc_mut_to_alltp53mut REAL,
+    num_allmut INTEGER,
+    perc_thismut_to_allmut REAL,
+    vep_impact TEXT,
+    sift_impact TEXT,
+    sift_score REAL,
+    polyphen_impact TEXT,
+    polyphen_score REAL
+);
+""")
+
+#добавление данных в таблицу
+df = pd.read_parquet(r"C:\data_eng\data_afer_EDA.parquet")
 
 #Берем только первые 100 строк
 df_subset = df.head(100)
+df_subset = df_subset.applymap(lambda x: None if pd.isna(x) else x)
+df_subset.columns = [c.lower() for c in df_subset.columns]
 
 #Преобразуем DataFrame в список кортежей
 data_tuples = [tuple(x) for x in df_subset[[
-    'ssm_id', 'dna_change', 'protein_change', 'type', 'consequence',
-    'num_ssm_affected_cases', 'num_TP53_cases', 'ssm_affected_cases_percentage',
-    'num_gdc_ssm_affected_cases', 'num_gdc_ssm_cases', 'gdc_ssm_affected_cases_percentage',
+    'id', 'dna_change', 'protein_change', 'type_of_mutation', 'consequence_for_transcript',
+    'num_tp53mut', 'num_all_tp53_mut', 'perc_mut_to_alltp53mut',
+    'num_allmut', 'perc_thismut_to_allmut',
     'vep_impact', 'sift_impact', 'sift_score', 'polyphen_impact', 'polyphen_score'
 ]].values]
 
-#SQL-запрос для вставки
+#SQL-запрос для вставки данных в таблицу
 sql = """
 INSERT INTO korableva (
-    ssm_id, dna_change, protein_change, type, consequence,
-    num_ssm_affected_cases, num_TP53_cases, ssm_affected_cases_percentage,
-    num_gdc_ssm_affected_cases, num_gdc_ssm_cases, gdc_ssm_affected_cases_percentage,
+    id, dna_change, protein_change, type_of_mutation, consequence_for_transcript,
+    num_tp53mut, num_all_tp53_mut, perc_mut_to_alltp53mut,
+    num_allmut, perc_thismut_to_allmut,
     vep_impact, sift_impact, sift_score, polyphen_impact, polyphen_score
 ) VALUES %s
 """
