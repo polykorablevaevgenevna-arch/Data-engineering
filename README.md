@@ -52,4 +52,4 @@ https://94.124.179.195:9001/browser/poly-bio-data/frequent-mutations.2025-09-28.
 cd "C:\Users\Поля\1 projects\data_eng\main" #папка, где лежит пакет
 python main.py --raw_file "C:\data_eng\RAW.tsv" --db_path "C:\data_eng\creds.db"
 
-
+EDA: https://github.com/polykorablevaevgenevna-arch/Data-engineering/blob/main/EDA.ipynb
