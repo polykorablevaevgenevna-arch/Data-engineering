@@ -39,11 +39,17 @@ https://94.124.179.195:9001/browser/poly-bio-data/frequent-mutations.2025-09-28.
 При запуске проекта рекомендуется использовать переменное окружение environmental.yml.
 Для запуска этого переменного окружения в командной строке введите команду conda env create -f environment.yml, затем активируйте с помощью команды conda activate data_eng
 
+### Структура ETL:
+В состав пакета входит 5 модулей:
+* main.py - объединяет все пакеты и предоставляет CLI-интерфейс
+* extract.py - скачивает файл из S3 хранилища Minio, загружает на компьютер и создаёт дата фрейм
+* transform.py - делает привидение типов данных
+* validate.py - меняет названия столбцов и удаляет столбец (по результатам EDA)
+* load.py - загружает первые 100 строк обработанного дата сета в базу данных
 
-
-
-
-криншотиншот с результатом команды raw_data.head()
-<img width="665" height="663" alt="image" src="https://github.com/user-attachments/assets/17c030d8-1aaa-4db1-a461-7d5185e82157" />
+### Запуск проекта
+Для запуска проекта нужно ввести в командную строку следующую команду:
+cd "C:\Users\Поля\1 projects\data_eng\main" #папка, где лежит пакет
+python main.py --raw_file "C:\data_eng\RAW.tsv" --db_path "C:\data_eng\creds.db"
 
 
