@@ -50,6 +50,7 @@ https://94.124.179.195:9001/browser/poly-bio-data/frequent-mutations.2025-09-28.
 ### Запуск проекта
 Для запуска проекта нужно ввести в командную строку следующую команду для перемещения в папку, где лежит пакет:
 cd "C:\Users\Поля\1 projects\data_eng\main"
+
 Далее следующую команду для запуска проекта:
 python main.py --raw_file "C:\data_eng\RAW.tsv" --db_path "C:\data_eng\creds.db"
 
