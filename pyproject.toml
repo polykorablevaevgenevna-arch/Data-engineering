@@ -1,0 +1,17 @@
+[project]
+name = "tp53-analysis"
+version = "1.0.0"
+description = "Analisys of mytant version of TP53"
+authors = [
+    {name = "Koranleva Polina"}
+]
+license = {text = "None"}
+readme = "README.md"
+requires-python = "3.7"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
